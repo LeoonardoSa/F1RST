@@ -22,9 +22,9 @@ public class InternetAccountService {
         if (form.rePasswordMatch()) {
             var contaCorrente = contasCorrenteRepository.findByDadosDaConta(form.getDadosDaConta()).orElseThrow();
 
-            var correntista = contaCorrente.getCorrentista();
+            var cliente = contaCorrente.getCliente();
 
-            var command = new CreateUser(correntista.getId(), form.getEmail(), form.getPassword());
+            var command = new CreateUser(cliente.getId(), form.getEmail(), form.getPassword());
 
             rabbitTemplate.convertAndSend("create-user", "create-user", command);
         }

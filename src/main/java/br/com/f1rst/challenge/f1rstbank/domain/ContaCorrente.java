@@ -7,31 +7,11 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.NamedAttributeNode;
-import jakarta.persistence.NamedEntityGraph;
-import jakarta.persistence.NamedEntityGraphs;
 import jakarta.persistence.OneToOne;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@NamedEntityGraphs({
-        @NamedEntityGraph(
-          name = "pegaTudo",
-          includeAllAttributes = true
-        ),
-
-        @NamedEntityGraph(
-                name = "contaComCorrentista",
-                attributeNodes = {
-                        @NamedAttributeNode("correntista"),
-                }
-
-        )
-})
-
-@EqualsAndHashCode(of = {"dadosDaConta"})
 public class ContaCorrente {
 
     @Id
@@ -44,11 +24,11 @@ public class ContaCorrente {
     private DadosDaConta dadosDaConta;
 
     @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    private Correntista correntista;
+    private Cliente cliente;
 
-    public ContaCorrente(String banco, String agencia, String numero, Correntista correntista){
+    public ContaCorrente(String banco, String agencia, String numero, Cliente cliente){
         this.dadosDaConta = new DadosDaConta(banco, agencia, numero);
-        this.correntista = correntista;
+        this.cliente = cliente;
     }
 
     protected ContaCorrente() {
@@ -62,8 +42,8 @@ public class ContaCorrente {
         return id;
     }
 
-    public Correntista getCorrentista() {
-        return correntista;
+    public Cliente getCliente() {
+        return cliente;
     }
 
     public DadosDaConta getDadosDaConta() {

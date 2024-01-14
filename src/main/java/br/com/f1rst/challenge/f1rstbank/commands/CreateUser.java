@@ -3,21 +3,22 @@ package br.com.f1rst.challenge.f1rstbank.commands;
 import java.io.Serializable;
 
 public class CreateUser implements Serializable {
-    private Integer correntistaId;
+    private static final long serialVersionUID = 1L;
+	private Integer clienteId;
     private String email;
     private String password;
 
     CreateUser() {
     }
 
-    public CreateUser(Integer correntistaId, String email, String password) {
-        this.correntistaId = correntistaId;
+    public CreateUser(Integer clienteId, String email, String password) {
+        this.clienteId = clienteId;
         this.email = email;
         this.password = password;
     }
 
-    public Integer getCorrentistaId() {
-        return correntistaId;
+    public Integer getClienteId() {
+        return clienteId;
     }
 
     public String getEmail() {
@@ -31,7 +32,7 @@ public class CreateUser implements Serializable {
     @Override
     public String toString() {
         return "CreateUser{" +
-                "correntistaId=" + correntistaId +
+                "clienteId=" + clienteId +
                 ", email='" + email + '\'' +
                 '}';
     }

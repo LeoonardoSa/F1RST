@@ -27,18 +27,18 @@ public class ContaController {
     @Autowired
     private ContaService service;
 
-    @PostMapping("/pessoaFisica")
+    @PostMapping("/pessoa-fisica")
     public ResponseEntity<?> criarNovaContaPF(@Valid @RequestBody PessoaFisicaForm pessoaFisicaForm){
 
-        DadosDaContaView dadosDaConta = service.criarConta(pessoaFisicaForm);
+        DadosDaContaView dadosDaConta = service.criarContaPF(pessoaFisicaForm);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(dadosDaConta);
     }
     
 //    @PostMapping("/pessoaJuridica")
-//    public ResponseEntity<?> criarNovaContaPJ(@Valid @RequestBody CorrentistaForm correntistaForm){
+//    public ResponseEntity<?> criarNovaContaPJ(@Valid @RequestBody ClienteForm clienteForm){
 //
-//        DadosDaContaView dadosDaConta = service.criarConta(correntistaForm);
+//        DadosDaContaView dadosDaConta = service.criarConta(clienteForm);
 //
 //        return ResponseEntity.status(HttpStatus.CREATED).body(dadosDaConta);
 //    }
@@ -70,7 +70,7 @@ public class ContaController {
     }
 
     @GetMapping("/extrato")
-    public ResponseEntity<?> extrato(@Valid ContaCorrenteForm form){
+    public ResponseEntity<?> extrato(@Valid @RequestBody ContaCorrenteForm form){
         ExtratoView extrato = service.consultarExtrato(form);
 
         return ResponseEntity.ok(extrato);
@@ -79,11 +79,3 @@ public class ContaController {
 
 
 }
-
-
-
-
-// curl -i -X DELETE http://localhost:8080/contas -H "Content-Type: application/json" -d '{"banco":"111","agencia":"222", "numero": "333"}'
-// curl -i -X POST http://localhost:8080/contas -H "Content-Type: application/json" -d '{"nome":"Rodrigo Vieira","cpf":"90345210688"}'
-// curl -i -X PUT http://localhost:8080/contas -H "Content-Type: application/json" -d '{"valor":"10.00", "operacao": 1, "conta": {"banco":"111","agencia":"222", "numero": "333"}}'
-// curl -i -X GET "http://localhost:8080/contas?banco=111&agencia=222&numero=333"
