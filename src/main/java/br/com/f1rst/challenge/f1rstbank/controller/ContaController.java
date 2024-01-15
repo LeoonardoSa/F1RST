@@ -35,13 +35,13 @@ public class ContaController {
         return ResponseEntity.status(HttpStatus.CREATED).body(dadosDaConta);
     }
     
-//    @PostMapping("/pessoaJuridica")
-//    public ResponseEntity<?> criarNovaContaPJ(@Valid @RequestBody ClienteForm clienteForm){
-//
-//        DadosDaContaView dadosDaConta = service.criarConta(clienteForm);
-//
-//        return ResponseEntity.status(HttpStatus.CREATED).body(dadosDaConta);
-//    }
+    @PostMapping("/pessoa-juridica")
+    public ResponseEntity<?> criarNovaContaPJ(@Valid @RequestBody PessoaFisicaForm clienteForm){
+
+        DadosDaContaView dadosDaConta = service.criarContaPJ(clienteForm);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(dadosDaConta);
+    }
 
     @DeleteMapping
     public ResponseEntity<?> fecharConta(@Valid @RequestBody ContaCorrenteForm contaForm){
@@ -73,7 +73,7 @@ public class ContaController {
     public ResponseEntity<?> extrato(@Valid @RequestBody ContaCorrenteForm form){
         ExtratoView extrato = service.consultarExtrato(form);
 
-        return ResponseEntity.ok(extrato);
+        return ResponseEntity.status(HttpStatus.OK).body(extrato);
     }
 
 

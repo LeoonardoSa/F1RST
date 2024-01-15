@@ -79,6 +79,19 @@ public class ContaService {
 		DadosDaConta dadosDaConta = conta.getDadosDaConta();
 		return dadosDaContaConverter.convert(dadosDaConta);
 	}
+	
+	public DadosDaContaView criarContaPJ(PessoaFisicaForm pessoaFisicaForm) {
+		Cliente cliente = pessoaFisicaForm.toCliente();
+
+		clienteRepository.save(cliente);
+
+		ContaCorrente conta = factory.criarConta(cliente);
+
+		contasCorrenteRepository.save(conta);
+
+		DadosDaConta dadosDaConta = conta.getDadosDaConta();
+		return dadosDaContaConverter.convert(dadosDaConta);
+	}
 
 	public void fecharConta(DadosDaConta dadosDaConta) {
 		ContaCorrente conta = buscaContaPor(dadosDaConta);

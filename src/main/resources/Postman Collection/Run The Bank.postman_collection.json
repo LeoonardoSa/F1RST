@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "34dd1e56-ea5d-4b4d-96fd-c44673179479",
+		"name": "Run The Bank",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13527539"
+	},
+	"item": [
+		{
+			"name": "Conta",
+			"item": [
+				{
+					"name": "Abertura de conta PF",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Gon Freecs\",\n    \"cpf\": \"40674716027\",\n    \"endereco\": \"Ilha da Baleia\",\n    \"senha\": \"StrongPassword\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/pessoa-fisica",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"pessoa-fisica"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Abertura de conta PJ",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Gon Freecs\",\n    \"cpf\": \"40674716027\",\n    \"endereco\": \"Ilha da Baleia\",\n    \"senha\": \"StrongPassword\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/pessoa-juridica",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"pessoa-juridica"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Movimentar uma conta",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"valor\": \"10.00\",\n  \"operacao\": 1,\n  \"conta\": {\n    \"banco\": \"033\",\n    \"agencia\": \"04254\",\n    \"numero\": \"2039304461\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fechar uma conta",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"banco\": \"033\",\n  \"agencia\": \"04254\",\n  \"numero\": \"422601464\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Extrato",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"agencia\": \"04254\",\r\n    \"banco\": \"033\",\r\n    \"numero\": \"881561493\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/extrato",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"extrato"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{user}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8080/contas",
+			"type": "default"
+		},
+		{
+			"key": "user",
+			"value": "user",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "password",
+			"type": "string"
+		}
+	]
+}

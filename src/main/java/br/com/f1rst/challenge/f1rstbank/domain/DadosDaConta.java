@@ -14,14 +14,17 @@ public class DadosDaConta {
     private String agencia;
     @NotBlank
     private String numero;
+    @NotBlank
+    private String status;
 
     protected DadosDaConta() {
     }
 
-    public DadosDaConta(String banco, String agencia, String numero) {
+    public DadosDaConta(String banco, String agencia, String numero, String status) {
         this.banco = banco;
         this.agencia = agencia;
         this.numero = numero;
+        this.status = status;
     }
 
     public String getBanco() {
@@ -35,18 +38,27 @@ public class DadosDaConta {
     public String getNumero() {
         return numero;
     }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        DadosDaConta that = (DadosDaConta) o;
-        return banco.equals(that.banco) && agencia.equals(that.agencia) && numero.equals(that.numero);
+    
+    public String getStatus() {
+        return status;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(banco, agencia, numero);
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hash(agencia, banco, numero, status);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DadosDaConta other = (DadosDaConta) obj;
+		return Objects.equals(agencia, other.agencia) && Objects.equals(banco, other.banco)
+				&& Objects.equals(numero, other.numero) && Objects.equals(status, other.status);
+	}
+
 }

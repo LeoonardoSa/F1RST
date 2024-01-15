@@ -18,6 +18,7 @@ public class FiltraMovimentacaoForm {
     private String banco;
     private String agencia;
     private String numero;
+    private String status;
     private Operacao operacao;
     private BigDecimal valor;
 
@@ -29,7 +30,7 @@ public class FiltraMovimentacaoForm {
 
 
     public DadosDaConta toDadosDaConta() {
-        return new DadosDaConta(banco, agencia, numero);
+        return new DadosDaConta(banco, agencia, numero,status);
     }
 
     public LocalDateTime toInicio() {

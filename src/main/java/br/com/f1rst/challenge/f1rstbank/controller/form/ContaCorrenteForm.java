@@ -19,8 +19,10 @@ public class ContaCorrenteForm {
     @JsonProperty
     @NotBlank(message = "número é um campo obrigatório e não pode estar em branco")
     private String numero;
+    
+    
 
     public DadosDaConta toDadosDaConta() {
-        return new DadosDaConta(banco, agencia, numero);
+        return new DadosDaConta(banco, agencia, numero, "ATIVA");
     }
 }

@@ -26,16 +26,16 @@ public class ContaCorrente {
     @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private Cliente cliente;
 
-    public ContaCorrente(String banco, String agencia, String numero, Cliente cliente){
-        this.dadosDaConta = new DadosDaConta(banco, agencia, numero);
+    public ContaCorrente(String banco, String agencia, String numero, String status, Cliente cliente){
+        this.dadosDaConta = new DadosDaConta(banco, agencia, numero, status);
         this.cliente = cliente;
     }
 
     protected ContaCorrente() {
     }
 
-    public boolean identificadaPor(String banco, String agencia, String numero) {
-        return this.dadosDaConta.equals(new DadosDaConta(banco, agencia, numero));
+    public boolean identificadaPor(String banco, String agencia, String numero, String status) {
+        return this.dadosDaConta.equals(new DadosDaConta(banco, agencia, numero, status));
     }
 
     public Integer getId() {
